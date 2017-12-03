@@ -1,5 +1,5 @@
 package application;
-	
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -23,61 +23,54 @@ import java.io.IOException;
 public class Main extends Application {
 
 	private AnchorPane mypane;
-	
+
 	/**
 	 * crea el Stage
 	 */
-	
-    @Override
-    public void start(Stage stage) throws IOException {
-    
-    	/**
-    	 * carga el controlador y la vista fxml 
-    	 */
-    	
-    	FXMLLoader loader = new FXMLLoader(
-            getClass().getResource(
-                "forest.fxml"
-            )
-        );
-//    	loader.setController(new SetBlur());
-        mypane = (AnchorPane) loader.load();
+	@Override
+	public void start(Stage stage) throws IOException {
 
-        /**
-         * titula y coloca la escena en el stage
-         */
-        stage.setTitle("Where's the squirrel?");
-        stage.setScene(new Scene(mypane));
-        stage.show();
-    }
-   
+		/**
+		 * carga el controlador y la vista fxml
+		 */
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("forest.fxml"));
+		// loader.setController(new SetBlur());
+		mypane = (AnchorPane) loader.load();
 
-    	
-    /**
-     * la clase controladora que aÃ±ade un efecto a la imagen
-     */
-    private class SetBlur {
-    	
-    	@FXML
-        private ImageView imageView;       
+		/**
+		 * titula y coloca la escena en el stage
+		 */
+		stage.setTitle("Where's the squirrel?");
+		stage.setScene(new Scene(mypane));
+		stage.show();
+	}
 
-/**
- * inicializa al igual que el constructor pero permite acceder al componente imageView ya creado en fxml
- */
-    	@FXML
-        public void initialize() {           
-                 imageView.setEffect(new GaussianBlur(10));
-        }
-    	
-    }
-  
-    /**
-     * arranca la aplicación
-     * @param args
-     */
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
+	/**
+	 * la clase controladora que aÃ±ade un efecto a la imagen
+	 */
+	private class SetBlur {
+
+		@FXML
+		private ImageView imageView;
+
+		/**
+		 * inicializa al igual que el constructor pero permite acceder al
+		 * componente imageView ya creado en fxml
+		 */
+		@FXML
+		public void initialize() {
+			imageView.setEffect(new GaussianBlur(10));
+		}
+
+	}
+
+	/**
+	 * arranca la aplicación
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 }
